@@ -1,7 +1,9 @@
 import { useAuth } from '../context/AuthContext';
+import {useNavigate} from 'react-router-dom';
 
 export default function PassengerDashboardPage() {
     const { user, logout } = useAuth();
+    const navigate = useNavigate();
 
     return (
         <div className="page">
@@ -11,7 +13,10 @@ export default function PassengerDashboardPage() {
                 </div>
                 <button className="btn btn-outline" onClick={logout}>Cerrar sesión</button>
             </header>
-            <p className="empty">espacio para el dashboard de pasajerooo</p>
+            <div className="card">
+                <h2>Bienvenido</h2>
+                <p>Desde aquí podrás solicitar un nuevo viaje.</p>
+                <button className="btn" onClick={() => navigate('/passenger/request')}> Solicitar viaje </button></div>
         </div>
     );
 }

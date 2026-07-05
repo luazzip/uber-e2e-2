@@ -5,6 +5,8 @@ import DriverDashboardPage from './pages/DriverDashboardPage';
 import PassengerDashboardPage from './pages/PassengerDashboardPage';
 import TripDetailDriverPage from './pages/TripDetailDriverPage';
 import HistoryPage from './pages/HistoryPage';
+import RequestTripPage from './pages/RequestTripPage';
+import TripDetailPassengerPage from './pages/TripDetailPassengerPage';
 import './App.css';
 
 function ProtectedRoute({ children, role }: { children: React.ReactNode; role?: string }) {
@@ -27,6 +29,8 @@ function AppRoutes() {
             <Route path="/driver/trips/:id" element={<ProtectedRoute role="DRIVER"><TripDetailDriverPage /></ProtectedRoute>} />
             <Route path="/driver/history" element={<ProtectedRoute role="DRIVER"><HistoryPage /></ProtectedRoute>} />
             <Route path="/passenger/dashboard" element={<ProtectedRoute><PassengerDashboardPage /></ProtectedRoute>} />
+            <Route path="/passenger/request" element={<ProtectedRoute role="PASSENGER"><RequestTripPage /></ProtectedRoute>}/>
+            <Route path="/passenger/trips/:id" element={<ProtectedRoute role="PASSENGER"><TripDetailPassengerPage /></ProtectedRoute>}/>
             <Route path="/" element={user ? <Navigate to={user.role === 'DRIVER' ? '/driver/dashboard' : '/passenger/dashboard'} replace /> : <Navigate to="/login" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
