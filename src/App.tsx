@@ -31,6 +31,7 @@ function AppRoutes() {
             <Route path="/passenger/dashboard" element={<ProtectedRoute><PassengerDashboardPage /></ProtectedRoute>} />
             <Route path="/passenger/request" element={<ProtectedRoute role="PASSENGER"><RequestTripPage /></ProtectedRoute>}/>
             <Route path="/passenger/trips/:id" element={<ProtectedRoute role="PASSENGER"><TripDetailPassengerPage /></ProtectedRoute>}/>
+            <Route path="/passenger/history" element={<ProtectedRoute role="PASSENGER"><HistoryPage /></ProtectedRoute>}/>
             <Route path="/" element={user ? <Navigate to={user.role === 'DRIVER' ? '/driver/dashboard' : '/passenger/dashboard'} replace /> : <Navigate to="/login" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
